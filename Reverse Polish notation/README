@@ -1,0 +1,20 @@
+
+Dimoiu Cezar Gabriel - 322CB
+================= Tema 1 IOCLA ==================
+
+
+Tema presupunea evaluarea unei expresii aritmetice in forma postfixata
+
+Am folosit "bl" pentru a citi caracter cu caracter stringul dat.
+Am comparat pe rand caracterul cu fiecare din operatiile citie, sau spatiu. In
+caz contrar am trecut la formarea numarului (label 'numar').
+Am considerat 'esi' = 1, pentru numere pozitive, si 'esi' = -1, pentru numere negative, iar la momentul corespunzator imulteam numarul meu cu 'esi'.
+Dupa ce citeam un '-', verificam daca el reprezinta operatia de scadere, sau
+reprezinta un numar negativ (label 'verificare'), setam 'esi' corespunzator, 
+si in functie de caz realizam operatia de scadere(label 'scadere'), sau citeam numarul (label-urile 'citire' si 'numar').
+Pentru fiecare operatie citita mergeam la label-ul corespunzator:
+'adunare', 'scadere', 'inmultire', 'impartire'
+Cand caracterul citit este '0x0' (null), merg la label-ul 'finish', care printeaza
+rezultatul.
+
+PS: Tema basic, mergea si ceva mai greu :)
