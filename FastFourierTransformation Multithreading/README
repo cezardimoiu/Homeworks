@@ -1,0 +1,5 @@
+N - number of threads
+Usage: 
+./inputGenerator <N> <fileName> <randomSeed>
+./compareOutputs <out1> <out2>
+./homeworkFFT <input> <output> <N>
