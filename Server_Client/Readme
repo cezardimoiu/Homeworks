@@ -1,0 +1,44 @@
+Dimoiu Cezar-Gabriel 322CB
+
+Tema2PC: Aplicatie client-server TCP si UDP pentru gestionarea mesajelor
+
+Helpers.h:
+	O structura "mesaj_t" care contine datele primite de la clientii UDP
+	si ip-ul si portul clientilor UDP.
+	O a doua structura "user_t" care stocheaza informatii despre user: 
+	topicul la care vrea sa se aboneze, tipul abonamentului si id-ul
+	userului.
+	Functia DIE de la laborator care ajuta la verificarea erorilor
+
+Descriere client TCP:
+  usage: ./client ID_CLIENT IP_ADDRESS PORT
+	Am deschis un socket pentru o conexiune TCP cu serverul si l-am
+	adaugat in multimea descriptorilor alaturi de stdin.
+	Pentru o conexiune care se inchide la comanda exit am ales sa implementez
+	o bucla while.
+	Daca STDIN e activ si primesc comanda exit, se iese din bucla si se 
+	inchide clientul. Daca primesc comanda subscribe, citesc si topicul 
+	si tipul abonamentului(0 sau 1). Daca comanda e invalida, mai citesc 
+	odata. Label-ul start ma ajuta sa ignor in cazul in care se citesc comenzi 
+	invalide. Daca primesc comanda unsubscribe setez tipul abonamenului la
+	-1 (unsubscribe).
+	Dupa ce s-a facut citirea, trimit structura catre server.
+	Daca primesc ceva pe socket afisez ceea ce s-a trimis dupa structura
+	mentionata in enunt.
+	
+Descriere server:
+	usage: ./server PORT
+	Deschid 2 socketi, unul TCP si unul UDP. Mentin conexiunea pana 
+	primesc comanda exit. Parcurg multimea descriptorilor. Daca e un 
+	client nou, fac accept pe socket, ii bag descriptorul in multime si 
+	afisez un mesaj cu IP-ul si PORT-ul pe care s-a conectat clientul.
+	Daca e socket udp preiau mesajul, ii adaug IP-ul si PORT-ul clientului
+	UDP care l-a trimis si trimit totul mai departe catre toti clientii TCP.
+
+/* TODO: Trebuie sa trimit doar la clientii care sunt abonati la topicul respectiv  */
+	
+	Daca primesc pe socket TCP activ ar trebui sa-l bag intr-o lista cu userii abonati
+	la topicul respectiv.
+	Daca primesc ceva de la STDIN, verific daca e "exit". Daca e orice altceva nu-l bag
+	in seama. Daca e exit, inchid toate conexiunile, apoi serverul.
+	
