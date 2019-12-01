@@ -1,0 +1,4 @@
+usage:
+	java Homework <wormHoles> <hashCount> <HQCount> <SpaceCount>
+
+	python generate_graph.py -f test01 -s <nrSystems> -e <nrEdges>
